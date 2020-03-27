@@ -24,6 +24,7 @@ end
 
 def print_by_cohort(names)
   puts "What cohort do you like to print?"
+  # get the month and use it to print students names by cohort
   month = gets.chomp
   names.map do |name|
     puts name[:name] if name[:cohort] == month.to_sym
@@ -48,6 +49,7 @@ end
 students = input_students
 # nothing happens until we call the methods
 print_header
+# only prints students names if there are at list 1 student in the list
 if students.length >= 1
   print_names(students)
   print_footer(students)
