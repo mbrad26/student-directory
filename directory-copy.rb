@@ -37,7 +37,7 @@ end
 
 def print_names(names)
   names.each_with_index do |name, index| 
-    puts "#{index + 1}. #{name[:name]} (#{name[:cohort]} cohort)" # if name[:name].start_with?("A")
+    puts "#{index + 1}. #{name[:name]} (#{name[:cohort]} cohort)" if name[:name].length < 12 # if name[:name].start_with?("A")
   end
 end
 
