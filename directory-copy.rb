@@ -48,6 +48,10 @@ end
 students = input_students
 # nothing happens until we call the methods
 print_header
-print_names(students)
-print_footer(students)
-print_by_cohort(students)
+if students.length >= 1
+  print_names(students)
+  print_footer(students)
+  print_by_cohort(students)
+else 
+  puts "There are no regeistered students at this moment."
+end
