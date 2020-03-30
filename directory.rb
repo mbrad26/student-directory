@@ -19,12 +19,12 @@ end
 def load_students
   puts "What is the name of the file you want to be loaded"
   filename = STDIN.gets.chomp
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
-    name, cohort = line.chomp.split(",")
-    add_students(name, cohort)
+  File.open(filename, "r") do |file|
+    file.readlines.each do |line|
+      name, cohort = line.chomp.split(",")
+      add_students(name, cohort)
+    end
   end
-  file.close
 end
 
 def save_students
