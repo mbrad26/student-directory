@@ -16,7 +16,9 @@ def try_load_students
   end
 end
 
-def load_students(filename = "students.csv")
+def load_students
+  puts "What is the name of the file you want to be loaded"
+  filename = STDIN.gets.chomp
   file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
@@ -26,8 +28,10 @@ def load_students(filename = "students.csv")
 end
 
 def save_students
+  puts "Please give a name to the file"
+  filename = STDIN.gets.chomp 
   # open the file for writing
-  file = File.open("students.csv", "a")
+  file = File.open(filename + ".csv", "a")
   # iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
