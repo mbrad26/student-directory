@@ -5,8 +5,8 @@ def input_students
   students = []
   # get the first name and month
   name = gets.rstrip.capitalize 
-  month = gets.chomp
-  country_of_birth = gets.chomp.upcase 
+  month = gets.rstrip
+  country_of_birth = gets.rstrip.upcase 
   
   # while the name is not empty, repeat this code
   while !name.empty? do
@@ -62,6 +62,14 @@ def print_by_length_of_name(names)
   end
 end
 
+def print_grouped_by_cohort(names)
+  #sorted = names.sort {|x, y| x[:cohort] <=> y[:cohort]}
+  #sorted.each {|name| puts formatter(name)}
+  
+  names.group_by {|name| name[:cohort]}
+       .each_pair {|k, v| v.each {|element| puts formatter(element)}}
+end
+
 def print_header
   puts "The students of Villains Academy"
   puts "-------------"
@@ -97,6 +105,7 @@ if students.length >= 1
   print_by_cohort(students)
   print_by_specified_letter(students)
   print_by_length_of_name(students)
+  print_grouped_by_cohort(students)
 else 
   puts "There are no regeistered students at this moment."
 end
