@@ -7,13 +7,10 @@ def input_students
   name = gets.rstrip.capitalize 
   month = gets.rstrip
   country_of_birth = gets.rstrip.upcase 
-  
   # while the name is not empty, repeat this code
   while !name.empty? do
-    
     month = 'undecided' if month.empty?
     country_of_birth = 'citizen of the world' if country_of_birth.empty?
-    
     students << {name: name, cohort: month.to_sym, country: country_of_birth.to_sym }
     if students.length == 1
       puts "Now we have #{students.count} student"
@@ -65,7 +62,6 @@ end
 def print_grouped_by_cohort(names)
   #sorted = names.sort {|x, y| x[:cohort] <=> y[:cohort]}
   #sorted.each {|name| puts formatter(name)}
-  
   names.group_by {|name| name[:cohort]}
        .each_pair {|k, v| v.each {|element| puts formatter(element)}}
 end
@@ -85,7 +81,6 @@ def print_names(names)
     count += 1
   end
 =end 
-
   names.each_with_index do |name, index| 
     puts "#{index + 1}. #{formatter(name)}" 
   end

@@ -16,7 +16,7 @@ def open_file(filename)
 end
 
 def save_file(filename)
-  CSV.open(filename + ".csv", "a") do |file|
+  CSV.open(filename, "a") do |file|
     @students.each do |student|
       student_data = [student[:name], student[:cohort]]
       file << student_data
@@ -79,7 +79,7 @@ end
 def print_menu
   puts "1. Input the students"
   puts "2. Show list"
-  puts "3. Save the list to file"
+  puts "3. Save the list"
   puts "4. Load the list from file"
   puts "9. Exit"
 end
@@ -109,13 +109,16 @@ def input_students
   puts "To finish, just hit return twice"
   # get the first name
   name = STDIN.gets.chomp.capitalize
+  puts "Please enter a cohort"
   cohort = STDIN.gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
     add_students(name, cohort)
     puts "Now we have #{@students.count} students"
     # get another name from the user
+    puts "Please enter another name"
     name = STDIN.gets.chomp.capitalize
+    puts "Please enter a cohort"
     cohort = STDIN.gets.chomp
   end
 end
