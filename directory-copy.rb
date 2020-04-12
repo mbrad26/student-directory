@@ -1,28 +1,32 @@
-def input_students 
-  puts "Please enter the names of the students"
+def take_initial_input
+  puts "Please enter the name of the student"
   puts "To finish, just hit return twice"
-  # create an empty array
+  name = gets.chomp.capitalize 
+  month = gets.chomp
+  country_of_birth = gets.chomp.upcase 
+  return name, month, country_of_birth
+end
+
+def singular_plural_formatter(students)
+  return "Now we have #{students.count} student" if students.length == 1
+  return "Now we have #{students.count} students"
+end
+
+def add_students(students, name, month, country_of_birth)
+  students << {name: name, cohort: month.to_sym, country: country_of_birth.to_sym }
+end
+  
+def input_students 
   students = []
-  # get the first name and month
-  name = gets.rstrip.capitalize 
-  month = gets.rstrip
-  country_of_birth = gets.rstrip.upcase 
-  # while the name is not empty, repeat this code
+  name, month, country_of_birth = take_initial_input
   while !name.empty? do
     month = 'undecided' if month.empty?
     country_of_birth = 'citizen of the world' if country_of_birth.empty?
-    students << {name: name, cohort: month.to_sym, country: country_of_birth.to_sym }
-    if students.length == 1
-      puts "Now we have #{students.count} student"
-    else
-      puts "Now we have #{students.count} students"
-    end
+    add_students(students, name, month, country_of_birth)
+    puts singular_plural_formatter(students)
     # get another name, month from the user
-    name = gets.chomp.capitalize
-    month = gets.chomp
-    country_of_birth = gets.chomp.upcase
+    name, month, country_of_birth = take_initial_input
   end
-  # return the array of students
   students
 end
 
@@ -53,7 +57,7 @@ def print_by_length_of_name(names)
   puts 'Length of name, please'
   len = gets.chomp.to_i
   names.each do |name|
-    if name[:name].length < len
+    if name[:name].length <= len
       puts formatter(name)
     end
   end

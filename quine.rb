@@ -1,4 +1,4 @@
-# Just something I found online
+# Just something I found online ...
 
 variable = ""
 
