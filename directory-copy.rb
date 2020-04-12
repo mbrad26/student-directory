@@ -57,7 +57,7 @@ def print_by_length_of_name(names)
   puts 'Length of name, please'
   len = gets.chomp.to_i
   names.each do |name|
-    if name[:name].length <= len
+    if name[:name].length < len
       puts formatter(name)
     end
   end
