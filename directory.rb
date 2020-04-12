@@ -24,12 +24,13 @@ def save_file(filename)
   end
 end
 
+def argv_checker
+  return filename = ARGV.first if !ARGV.empty?
+  filename = 'students.csv'
+end
+
 def try_load_students
-  if !ARGV.empty?
-    filename = ARGV.first
-  else
-    filename = 'students.csv'
-  end
+  filename = argv_checker
   #return if filename.nil?
   if File.exists?(filename)
     load_students(filename)
