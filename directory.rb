@@ -104,22 +104,23 @@ def process(selection)
   end
 end
 
-def input_students
-  puts "Please enter the names of the students"
+def take_initial_input
+  puts "Please enter the name of the student"
   puts "To finish, just hit return twice"
-  # get the first name
   name = STDIN.gets.chomp.capitalize
   puts "Please enter a cohort"
   cohort = STDIN.gets.chomp
+  return name, cohort
+end
+
+def input_students
+  name, cohort = take_initial_input
   # while the name is not empty, repeat this code
   while !name.empty? do
     add_students(name, cohort)
     puts "Now we have #{@students.count} students"
     # get another name from the user
-    puts "Please enter another name"
-    name = STDIN.gets.chomp.capitalize
-    puts "Please enter a cohort"
-    cohort = STDIN.gets.chomp
+    name, cohort = take_initial_input
   end
 end
 
